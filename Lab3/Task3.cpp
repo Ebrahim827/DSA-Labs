@@ -62,7 +62,7 @@ void deleteLastNode()
     temp->next = nullptr;
 }
 
-void countNodes(){
+int countNodes(){
     int count = 0;
     Node* temp = head;
 
@@ -71,8 +71,7 @@ void countNodes(){
         count++;
         temp = temp->next;
     }
-
-    cout << "Number of nodes in the linked list: " << count << endl;
+    return count;
 }
 
 void reverseList()
@@ -95,16 +94,18 @@ void reverseList()
 void searchValue(int value)
 {
     Node* temp = head;
+    int index = 0;
+    //returns index of the value if found, else returns -1
 
     while (temp != nullptr)
     {
         if (temp->data == value)
         {
-            cout << "Value found." << endl;
+            cout << "Value found at index: " << index << endl;
             return;
         }
-
         temp = temp->next;
+        index++;
     }
     cout << "Value not found." << endl;
 }
@@ -162,15 +163,18 @@ int main()
 
             case 4:
                 deleteLastNode();
+                cout << "Updated list: ";
+                displayList();
                 break;
 
             case 5:
-                countNodes();
-                break;
+            cout << "Number of nodes in the linked list: " << countNodes() << endl;
+            break;
 
             case 6:
                 reverseList();
                 cout << "List reversed." << endl;
+                displayList();
                 break;
 
             case 7:
